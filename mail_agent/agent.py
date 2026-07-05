@@ -65,16 +65,28 @@ class MailAgent:
         """
 
         # kakao API 호출
+        from mail_agent.kakao_sender import send_kakao_message
+    
+        success = send_kakao_message(state['mail_title'], state['mail_sender'])
 
-        return {"isSuccess": True}
+        if success == True:
+            print("알림 전송에 성공하였습니다.")
+        else: 
+            print("알림 전송에 실패하였습니다.")
+
+        return {"isSuccess": success}
+
 
     def _routing(self, state: mailState): # private
         mail_class = state['mail_class']
 
-        if mail_class == 'error' or 'abnormal':
+        if mail_class == 'error' or mail_class == 'abnormal':
+            print(mail_class)
+            print("Routing to END")
             return END
         
+        print("Routing to kakaoTalk")
         return 'kakaotalkSend'
-    
+
     def run(self, mail_sender: str, mail_title: str):
         return self.graph.invoke({'mail_sender': mail_sender , 'mail_title':mail_title}) 
