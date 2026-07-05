@@ -1,5 +1,5 @@
-from mail_agent.agent import MailAgent
+# main.py
+from mail_agent.mail_fetcher import fetch_naver_mails
 
-agent = MailAgent()
-result = agent.run("당신의 계정이 해킹되었습니다")
-print(result)
+mails = fetch_naver_mails()
+print(mails)

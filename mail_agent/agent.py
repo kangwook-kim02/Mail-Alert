@@ -37,7 +37,9 @@ class MailAgent:
 
         normal은 사용자가 확인해야하는 메일을 의미하고,
         abnormal은 스팸이나 광고와 같이 사용자가 확인할 필요 없는 메일입니다.
-
+        
+        ---
+        메일 작성자: {state['mail_sender']}
         메일 제목:{state['mail_title']}
         응답 형식은 무조건 'normal' 혹은 'abnormal'로만 응답해주세요.
         응답 형식: normal or abnormal
@@ -74,5 +76,5 @@ class MailAgent:
         
         return 'kakaotalkSend'
     
-    def run(self, mail_title: str):
-        return self.graph.invoke({'mail_title':mail_title})
+    def run(self, mail_sender: str, mail_title: str):
+        return self.graph.invoke({'mail_sender': mail_sender , 'mail_title':mail_title}) 
