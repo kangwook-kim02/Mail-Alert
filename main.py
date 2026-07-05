@@ -11,13 +11,12 @@ def job():
         print(f"제목: {mail['subject']}")
         print(f"발신자: {mail['sender']}")
         
-        # 나중에 여기서 agent.run() 호출
         agent.run(mail['sender'], mail['subject'])
         
         save_sent_id(mail['mid'])
 
 scheduler = BlockingScheduler()
-scheduler.add_job(job, "interval", minutes=5)  # 5분마다 실행
+scheduler.add_job(job, "interval", seconds=30)  # 5분마다 실행
 
-print("스케줄러 시작!")
+print("Scheduler start")
 scheduler.start()

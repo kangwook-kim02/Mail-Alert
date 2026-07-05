@@ -71,7 +71,7 @@ class MailAgent:
     def _routing(self, state: mailState): # private
         mail_class = state['mail_class']
 
-        if mail_class == 'error':
+        if mail_class == 'error' or 'abnormal':
             return END
         
         return 'kakaotalkSend'
