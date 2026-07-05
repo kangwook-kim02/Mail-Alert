@@ -11,7 +11,7 @@ class MailAgent:
         self.graph = self._build_graph()
 
 
-    def _buid_graph(self): # private: _로 시작하는 함수
+    def _build_graph(self): # private: _로 시작하는 함수
         builder = StateGraph(mailState)
         
         builder.add_node('mail_classification', self._mail_classification)
@@ -48,7 +48,7 @@ class MailAgent:
         return {"mail_class": 'error', "isSuccess": False}
 
 
-    def _kakaotalkSend(state: mailState): # priavte
+    def _kakaotalkSend(self, state: mailState): # priavte
         """
         카카오톡 메시지 전송 노드
         """
@@ -57,7 +57,7 @@ class MailAgent:
 
         return {"isSuccess": True}
 
-    def _routing(state: mailState): # private
+    def _routing(self, state: mailState): # private
         mail_class = state['mail_class']
 
         if mail_class == 'error':
