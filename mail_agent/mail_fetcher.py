@@ -38,7 +38,7 @@ def fetch_naver_mails():
         return []
 
     # 가장 최근 1개만
-    latest = message_ids[0].split()[-1:]
+    latest = message_ids[0].split()
     sent_ids = load_sent_ids()
 
     mails = []
